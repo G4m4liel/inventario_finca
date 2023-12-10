@@ -1,0 +1,21 @@
+html,
+
+body {
+  margin: 0; /* Elimina el margen predeterminado del body */
+  padding: 0; /* Elimina el padding predeterminado del body */
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: linear-gradient(to right, #b92b27, #1565c0);
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+footer {
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.logo {
+  height: 3em;
+}
