@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import NavBar from '/components/navbar';
 import {Bar} from 'react-chartjs-2';
 import Link from "next/link"
 import {
@@ -67,6 +68,7 @@ const data = {
 function app(){
     return (
         <div>
+          <NavBar/>
         <h2>Bar Example (custom size)</h2>
         <Bar
           data={data}

@@ -371,7 +371,7 @@ app.post('/api/implemento/insert', async (req, res) => {
       `INSERT INTO implementos ( nombre, tipo, descripcion, ubicacion) VALUES ( '${nombre}', '${tipo}', '${descripcion}', '${ubicacion}')`
     );
 
-    res.send(result);
+    res.json({ success: true, message: 'Registro exitoso', data: result });
   } catch (err) {
     console.error(err);
     res.status(500).send('Error sql');
@@ -450,7 +450,7 @@ app.post('/api/lubricante/insert', async (req, res) => {
       `INSERT INTO lubricantes ( nombre, tipo, marca) VALUES ( '${nombre}', '${tipo}', '${marca}')`
     );
 
-    res.send(result);
+    res.json({ success: true, message: 'Registro exitoso', data: result });
   } catch (err) {
     console.error(err);
     res.status(500).send('Error sql');
@@ -530,7 +530,7 @@ app.post('/api/maquina/insert', async (req, res) => {
       `INSERT INTO maquinaria ( nombre, n_serie, matricula, modelo, marca, tipo_combustible, tipo_lubricante) VALUES ( '${nombre}', '${n_serie}','${matricula}', '${modelo}', '${marca}', '${tipo_combustible}', '${tipo_lubricante}')`
     );
 
-    res.send(result);
+    res.json({ success: true, message: 'Registro exitoso', data: result });
   } catch (err) {
     console.error(err);
     res.status(500).send('Error sql');
@@ -609,7 +609,7 @@ app.post('/api/huerto/insert', async (req, res) => {
       `INSERT INTO huerto ( tipo_planta, estado, tamaño_poblacion, ubicacion, descripcion ) VALUES ( '${tipo_planta}', '${estado}','${tamaño_poblacion}', '${ubicacion}', '${descripcion}' )`
     );
 
-    res.send(result);
+    res.json({ success: true, message: 'Registro exitoso', data: result });
   } catch (err) {
     console.error(err);
     res.status(500).send('Error sql');

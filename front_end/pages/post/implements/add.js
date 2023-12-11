@@ -2,12 +2,11 @@ import Link from "next/link"
 import React, { Component, useState } from 'react';
 import { useRouter } from 'next/router';
 
-const addHerramienta = () => {
+const addImplemento = () => {
   const [nombre, setNombre] = useState('');
-  const [area, setArea] = useState('');
   const [tipo, setTipo] = useState('');
-  const [existencia, setExistencia] = useState('');
-  const [localizacion, setLocalizacion] = useState('');
+  const [descripcion, setDescripcion] = useState('');
+  const [ubicacion, setUbicacion] = useState('');
   const router = useRouter();
 
 
@@ -15,34 +14,33 @@ const addHerramienta = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === 'name') setNombre(value);
-    else if (name === 'area') setArea(value);
     else if (name === 'tipo') setTipo(value);
-    else if (name === 'existencia') setExistencia(value);
-    else if (name === 'localizacion') setLocalizacion(value);
+    else if (name === 'descripcion') setDescripcion(value);
+    else if (name === 'ubicacion') setUbicacion(value);
   };
 
   // enviar el formulario
   const handleSubmit = async (e) => {
 
     try {
-      const response = await fetch('http://localhost:8082/api/herramienta/insert', {
+      const response = await fetch('http://localhost:8082/api/implemento/insert', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           nombre,
-          area,
           tipo,
-          existencia,
-          localizacion,
+          descripcion,
+          ubicacion,
         }),
       });
       const result = await response.json();
       // Verificar si el registro fue exitoso
       if (result.success) {
+        console.log('exito')
         alert('Registro exitoso. Agregaste una herramienta nueva');
-        router.push('/post/tools/tools');
+        router.push('/post/implements/implements');
       } else {
         alert('Error en el registro. Por favor, inténtalo de nuevo.');
       }
@@ -55,14 +53,9 @@ const addHerramienta = () => {
     <div>
       <div className='formcontainer mt-5 mb-5'>
         <form className='container'>
-          <h1 className='display-6'>Add Tool</h1>
+          <h1 className='display-6'>Add Implements</h1>
           <input
             type="text" id="name" name="name" placeholder="Name" value={nombre} 
-            className='form-control mt-3' onChange={handleChange}  maxLength={20}
-            required
-          />
-          <input
-            type="text" id="area" name="area" placeholder="Area" value={area}
             className='form-control mt-3' onChange={handleChange}  maxLength={20}
             required
           />
@@ -72,22 +65,22 @@ const addHerramienta = () => {
             required
           />
           <input
-            type="text" id="existencia" name="existencia" placeholder="Existence" value={existencia} 
-            className='form-control mt-3' onChange={handleChange}  maxLength={3}
+            type="text" id="descripcion" name="descripcion" placeholder="Description" value={descripcion} 
+            className='form-control mt-3' onChange={handleChange}  maxLength={200}
             required
           />
           <input
-            type="text" id="localizacion" name="localizacion" placeholder="Location" value={localizacion} 
+            type="text" id="ubicacion" name="ubicacion" placeholder="Location" value={ubicacion} 
             className='form-control mt-3' onChange={handleChange}  maxLength={20}
             required
           />
           <div className="mt-4">
-          <button className="btn btn-warning" type="button" 
-            onClick={handleSubmit}>Add
+          <button className="btn btn-warning" type="button"  onClick={handleSubmit}>
+            Add
           </button>
           &nbsp;
           &nbsp;
-          <Link href="./tools">
+          <Link href="./implements">
             <button className="btn btn-danger" type="button">
               Cancel
             </button>
@@ -102,4 +95,4 @@ const addHerramienta = () => {
   );
 };
 
-export default addHerramienta;
+export default addImplemento;

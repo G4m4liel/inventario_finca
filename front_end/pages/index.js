@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Head from 'next/head';
-import styles from '../styles/Login.module.css';
-import Link from 'next/link';
 
 
 export default function Home() {
-
+  const router = useRouter();
   const [nombre, setNombre] = useState('');
   const [contraseña, setContraseña] = useState('');
+
+  const handleClick = () => {
+    router.push('./post/Registro');
+  };
 
   const handleLogin = async() => {
 
@@ -42,17 +45,19 @@ export default function Home() {
         <link rel="icon" href="/logo_unav.png" />
       </Head>
       <main>
-
-      <div className={styles.formcontainer}>
-        <form className={styles.container} >
+      <div className='formcontainer mt-5 mb-5'>
+        <form className='container'>
+          <h1 className='display-6'>LOGIN</h1>
           <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} 
-            placeholder="Username" maxLength={10} className={styles.con}/>
+            placeholder="Username" maxLength={10} className='form-control mt-3'/>
+
           <input type="password" value={contraseña} onChange={(e) => setContraseña(e.target.value)} 
-            placeholder="Password" maxLength={6}className={styles.con}/>
-          <button type="button" className={styles.btn} onClick={handleLogin}>login</button>
-          <Link href="/post/Registro">
-            <button type="button" className={styles.btn}>register</button>
-          </Link>
+            placeholder="Password" maxLength={6}className='form-control mt-3'/>
+
+          <div className='d-grid gap-2 mt-4'>
+            <button type="button" className='btn btn-success' onClick={handleLogin}>LOGIN</button>
+            <button type="button" className='btn btn-warning' onClick={handleClick}>REGISTER</button>
+          </div>
         </form>
       </div>
       </main>

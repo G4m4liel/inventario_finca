@@ -1,16 +1,21 @@
 import Link from "next/link"
 import React, { Component, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import styles from '../../styles/Registro.module.css';
 
 
 
 const Register = () => {
+  const router = useRouter();
   const [nombre, setNombre] = useState('');
   const [contraseña, setContraseña] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [email, setEmail] = useState('');
 
-  // Maneja los cambios en los campos del formulario
+  const handleClick = () => {
+    router.push('../');
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === 'username') setNombre(value);
@@ -19,7 +24,6 @@ const Register = () => {
     else if (name === 'email') setEmail(value);
   };
 
-  // enviar el formulario
   const handleSubmit = async (e) => {
 
     if (contraseña !== confirmPassword) {
@@ -81,39 +85,39 @@ const Register = () => {
 
   return (
     <div>
-      <div className={styles.formcontainer}>
-        <form className={styles.container} >
+      <div className='formcontainer mt-5 mb-5'>
+        <form className='container' >
+          <h1 className='display-6'>REGISTER</h1>
           <input
             type="text" id="username" name="username" placeholder="Username" value={nombre} 
-            onChange={handleChange} className={styles.con} maxLength={10}
+            onChange={handleChange} className='form-control mt-4' maxLength={10}
             required
           />
           <input
             type="password" id="password" name="password" placeholder="Password" value={contraseña}
-            onChange={handleChange} className={styles.con} maxLength={6}
+            onChange={handleChange} className='form-control mt-4' maxLength={6}
             required
           />
           <input
             type="password" id="ConfirmPassword" name="ConfirmPassword" placeholder="ConfirmPassword" value={confirmPassword} 
-            onChange={handleChange} className={styles.con} maxLength={6}
+            onChange={handleChange} className='form-control mt-4' maxLength={6}
             required
           />
           <input
             type="email" id="email" name="email" placeholder="Email" value={email} 
-            onChange={handleChange} className={styles.con} maxLength={30}
+            onChange={handleChange} className='form-control mt-4' maxLength={30}
             required
           />
-          <button type="button" className={styles.btn} onClick={handleSubmit}>
-            Register
-          </button>
-          <Link href="../">
-            <button type="button" className={styles.btn}>
-              Back
-            </button>
-          </Link>
+          <div className='d-grid gap-2 mt-4'>
+            <button type="button" className='btn btn-primary' onClick={handleSubmit}>
+            REGISTER</button>
+
+            <button type="button" className='btn btn-warning' onClick={handleClick}>
+              BACK</button>
+
+          </div>
         </form>
       </div>
-
       <footer>
         <img src="/logo_blanco.png" alt="UNAV" className='logo' />
       </footer>

@@ -60,28 +60,33 @@ const EditarHerramienta = () => { // Obtén el parámetro de la URL
 
   return (
     <div>
-      <NavBar/>
-      <h2>Editar Herramienta</h2>
-      <form>
-        <label>Nombre:</label>
-        <input type="text" name="nombre" value={herramienta.nombre} onChange={handleInputChange} />
+      <div className='formcontainer mt-5 mb-5'>
+      <form className='container'>
+        <h1 className='display-6'>Editar Herramienta</h1>
+        <label>Name:</label>
+        <input className='form-control' type="text" name="nombre" placeholder='Name' value={herramienta.nombre} onChange={handleInputChange} />
 
-        <label>Área:</label>
-        <input type="text" name="area" value={herramienta.area} onChange={handleInputChange} />
+        <label>Area:</label>
+        <input className='form-control' type="text" name="area" placeholder='Area' value={herramienta.area} onChange={handleInputChange} />
 
-        <label>Tipo:</label>
-        <input type="text" name="tipo" value={herramienta.tipo} onChange={handleInputChange} />
+        <label>Type:</label>
+        <input className='form-control' type="text" name="tipo" placeholder='Type' value={herramienta.tipo} onChange={handleInputChange} />
 
-        <label>Existencia:</label>
-        <input type="text" name="existencia" value={herramienta.existencia} onChange={handleInputChange} />
+        <label>Stock:</label>
+        <input className='form-control' type="text" name="existencia" placeholder='Stock' value={herramienta.existencia} onChange={handleInputChange} />
 
-        <label>Localización:</label>
-        <input type="text" name="localizacion" value={herramienta.localizacion} onChange={handleInputChange} />
-
-        <button type="button" onClick={handleActualizar}>Update</button>
-        <button type="button" onClick={handleClick}>Cancel</button>
-        
+        <label>Location:</label>
+        <input className='form-control' type="text" name="localizacion" placeholder='Location' value={herramienta.localizacion} onChange={handleInputChange} />
+        <div className='mt-4'>
+        <button className='btn btn-success' type="button" onClick={handleActualizar}>Update</button>
+        &nbsp;
+        <button className='btn btn-warning' type="button" onClick={handleClick}>Cancel</button>
+        </div>
       </form>
+      </div>
+      <footer>
+        <img src="/logo_blanco.png" alt="UNAV" className='logo' />
+      </footer>
     </div>
   );
 };
