@@ -23,9 +23,39 @@ app.get('/api/graficas', async (req, res) => {
       res.status(500).send('Error de servidor');
     } finally {
       // Cerrar la conexión después de realizar la consulta
-      await sql.close();
+      await database.close();
     }
   });
+
+
+//graficas que sirve
+app.get('/api/grafica/reading', async (req, res) => {
+  try {
+    await database.connect();
+    const result = await database.readData('select count(area) as N_Tools, area from herramientas group by area');
+    res.send(result);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error de servidor');
+  } finally {
+    await database.close();
+  }
+});
+
+
+//menu
+app.get('/api/reporte/reading', async (req, res) => {
+  try {
+    await database.connect();
+    const result = await database.readData('select empleado.nombre, tipo_cultivo, etapa, fecha_ini, fecha_fin, observaciones from empleado inner join operaciones_agricolas on id_empleado =encargado');
+    res.send(result);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error de servidor');
+  } finally {
+    await database.close();
+  }
+});
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -744,7 +774,7 @@ app.delete('/api/producto/delete/:id_producto', async (req, res) => {
 app.get('/api/mantenimientomaquina/reading', async (req, res) => {
   try {
     await database.connect();
-    const result = await database.readData('SELECT * FROM mantenimiento_maquinaria');
+    const result = await database.readData('select  maquinaria.nombre as lamaquina, fecha_mantenimiento, tipo_mantenimiento, descripcion_mantenimiento, empleado.nombre elempleado, cargo from maquinaria inner join mantenimiento_maquinaria on id_maquina = maquina inner join empleado on responsable = id_empleado');
     res.send(result);
   } catch (err) {
     console.error(err);

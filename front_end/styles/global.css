@@ -10,6 +10,7 @@ body {
 footer {
 text-align: right;
 margin-right: 5%;
+
 }
 
 .logo {
@@ -20,7 +21,7 @@ margin-right: 5%;
 }
 
 .formcontainer{
-  background-color:rgba(14, 110, 123, 0.5);
+  background-color:rgba(14, 110, 123, 0.6);
   box-shadow:  -3px 0px 20px 4px rgba(0, 0, 0, 0.5);
   border-radius: 15px;
   width: 350px;
@@ -38,4 +39,21 @@ margin-right: 5%;
 
 h3 {
   text-align: center;
+}
+
+.c1 {
+  background-color: rgb(13, 120, 61);
+  border-radius: 5px;
+}
+.c2 {
+  background-color: #0D4B7A;
+  border-radius: 5px;
+}
+.c3 {
+  background-color: #0D7A63;
+  border-radius: 5px;
+}
+.c4 {
+  background-color: #0D6E7A;
+  border-radius: 5px;
 }

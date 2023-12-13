@@ -14,7 +14,7 @@ export const navbar= () => {
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0 justify-content-betweeny">
         <li className="nav-item">
-          <a className="nav-link" href="/post/inventory/inventory">Inventory</a>
+          <a className="nav-link" href="/post/inventory/inventory">Maintenance</a>
         </li>
         <li className="nav-item">
           <a className="nav-link" href="/post/tools/tools">Tools</a>

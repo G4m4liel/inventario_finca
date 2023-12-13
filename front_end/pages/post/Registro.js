@@ -1,7 +1,5 @@
-import Link from "next/link"
 import React, { Component, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import styles from '../../styles/Registro.module.css';
 
 
 
